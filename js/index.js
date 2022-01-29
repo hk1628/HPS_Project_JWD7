@@ -1,4 +1,5 @@
-// Task 4
+// Initialize a new TaskManager with currentId set to 0
+const taskManager = new TaskManager(0);
 
 // Select the New Task Form
 const newTaskForm = document.querySelector('#newTaskForm');
@@ -19,6 +20,7 @@ newTaskForm.addEventListener("submit", (event) => {
   console.log("Task Due Date :" + validateDueDate.value);
   console.log("Task Status:" + validateStatus.value);
 
+  // Call this to clear all the form fields after the submission
   const clearFormFields = () => {
         validateName.value = "";
         validateDescription.value = "";
@@ -102,19 +104,22 @@ newTaskForm.addEventListener("submit", (event) => {
         if (validationFail > 0) {
           validationFail = 0;
           return;
-        } 
+        } else {
           // Push the valid input into our tasks array
-          // taskManager.addTask(
-          //   validateName.value,
-          //   validateDescription.value,
-          //   validateAssignedTo.value,
-          //   validateDueDate.value,
-          //   validateStatus.value
           
-          // clearFormFields();
+          taskManager.addTask(
+            validateName.value,
+            validateDescription.value,
+            validateAssignedTo.value,
+            validateDueDate.value,
+            validateStatus.value
+          
+          );
+        
+          clearFormFields();
           // taskManager.save();
           // taskManager.render();
-        
+        }
       });
 
 
